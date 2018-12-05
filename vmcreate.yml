@@ -1,7 +1,4 @@
 ---
-  gather_facts: false
-  connection: local
-  
   tasks:
   # get date
   - set_fact: creationdate="{{lookup('pipe', 'date "+%Y/%m/%d %H:%M"')}}"
