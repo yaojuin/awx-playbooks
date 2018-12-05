@@ -1,0 +1,47 @@
+---
+- hosts: all
+  gather_facts: false
+  connection: local
+  
+  tasks:
+  # get date
+  - set_fact: creationdate="{{lookup('pipe', 'date "+%Y/%m/%d %H:%M"')}}"
+  
+  # Create a VM from a template
+  - name: create the VM
+    vmware_guest:
+      hostname: '{{ SGDEV-VCSA-01.pspl.phillip.com }}'
+      username: '{{ administrator@vsphere-dev.local }}'
+      password: '{{ w8bpYk,^Cp }}'
+      validate_certs: no
+      cluster: SGDEV-ESXCLU-01
+      datacenter: 'SGDEV'
+      folder: SGDEV
+      name: '{{ AWXDEPLOY }}'
+      state: poweredon
+      guest_id: centos64Guest
+      annotation: "{{ notes }} - {{ creationdate }}"
+      disk:
+      - size_gb: 50
+        type: None
+        autoselect_datastore: yes
+      networks:
+      - name: Dev Network vlan2
+        ip: '{{ 10.30.4.239 }}'
+        netmask: 255.255.255.0
+        gateway: 10.30.4.254
+        dns_servers:
+        - 10.30.2.170
+        - 10.30.2.158
+      hardware:
+        memory_mb: 4096
+        num_cpus: 2
+      customization:
+        dns_servers:
+        - 10.30.2.170
+        - 10.30.2.158
+        domain : psdev.com
+        hostname: '{{ AWXDEPLOY }}'
+      template: CentosTemplate
+      wait_for_ip_address: no
+ 
