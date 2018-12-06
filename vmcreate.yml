@@ -8,7 +8,7 @@
   # Create a VM from a template
   - name: create the VM
     vmware_guest:
-      hostname: '{{ SGDEV-VCSA-01.pspl.phillip.com }}'
+      hostname: SGDEV-VCSA-01.pspl.phillip.com
       validate_certs: no
       cluster: SGDEV-ESXCLU-01
       datacenter: 'SGDEV'
