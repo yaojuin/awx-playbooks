@@ -34,6 +34,6 @@
         - 10.30.2.158
         domain : psdev.com
         hostname:'AWXDEPLOY'
-      template: CentosTemplate
+      template: 'CentosTemplate'
       wait_for_ip_address: no
  
