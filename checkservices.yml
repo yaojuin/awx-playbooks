@@ -2,5 +2,5 @@
 hosts: None
 tasks:
 - name: Check if Service Exists
-    stat: path=/etc/init.d/{{service_name}}
+    stat: path=/etc/init.d/"{{service_name}}"
     register: service_status
