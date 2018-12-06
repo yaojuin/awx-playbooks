@@ -1,5 +1,5 @@
 ---
-- hosts: None
+- hosts: rhel7_64Guest
   gather_facts: false
   tasks:
     - ping:
