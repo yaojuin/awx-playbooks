@@ -9,7 +9,7 @@
       validate_certs: no
       cluster: SGDEV-ESXCLU-01
       datacenter: 'SGDEV'
-      folder: SGDEV
+      folder: SGDEV/
       name: 'AWXDEPLOY'
       state: poweredon
       guest_id: centos64Guest
