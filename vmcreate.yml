@@ -13,7 +13,7 @@
       cluster: SGDEV-ESXCLU-01
       datacenter: 'SGDEV'
       folder: SGDEV
-      name: '{{ AWXDEPLOY }}'
+      name: 'AWXDEPLOY'
       state: poweredon
       guest_id: centos64Guest
       annotation: "{{ notes }} - {{ creationdate }}"
