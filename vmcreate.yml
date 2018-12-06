@@ -2,9 +2,6 @@
 - hosts: all
   gather_facts: no
   tasks:
-  # get date
-  - set_fact: creationdate="{{lookup('pipe', 'date "+%Y/%m/%d %H:%M"')}}"
-  
   # Create a VM from a template
   - name: create the VM
     vmware_guest:
@@ -16,7 +13,6 @@
       name: 'AWXDEPLOY'
       state: poweredon
       guest_id: centos64Guest
-      annotation: "{{ notes }} - {{ creationdate }}"
       disk:
       - size_gb: 50
         type: None
@@ -37,7 +33,7 @@
         - 10.30.2.170
         - 10.30.2.158
         domain : psdev.com
-        hostname: '{{ AWXDEPLOY }}'
+        hostname:'AWXDEPLOY'
       template: CentosTemplate
       wait_for_ip_address: no
  
