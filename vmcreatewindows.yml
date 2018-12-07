@@ -1,0 +1,43 @@
+---
+- hosts: localhost
+  connection: local
+  gather_facts: no
+  tasks:
+  - name: create the VM
+    vmware_guest:
+      hostname: SGDEV-VCSA-01.pspl.phillip.com
+      validate_certs: no
+      cluster: SGDEV-ESXCLU-01
+      datacenter: 'SGDEV'
+      folder: SGDEV/vm
+      name: 'AWXDEPLOYWindows'
+      state: poweredon
+      guest_id: windows9Server64Guest
+      disk:
+      - size_gb: 50
+        type: None
+        autoselect_datastore: yes
+      networks:
+      - name: Dev Network vlan2
+        ip: 10.30.4.238
+        netmask: 255.255.255.0
+        gateway: 10.30.4.254
+        dns_servers:
+        - 10.30.2.170
+        - 10.30.2.158
+      hardware:
+        memory_mb: 4096
+        num_cpus: 2
+      customization:
+        dns_servers:
+        - 10.30.2.170
+        - 10.30.2.158
+        domain : psdev.com
+        hostname: 'AWXDEPLOYWindows'
+        autologon: yes
+        domainadmin: psdev\cyclops
+        domainadminpassword: '!gu35S%Me)'
+        joindomain: psdev.com
+        password
+      template: 'Server2016Template'
+      wait_for_ip_address: yes
