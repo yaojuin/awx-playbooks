@@ -19,7 +19,7 @@
         autoselect_datastore: yes
       networks:
       - name: Dev Network vlan2
-        ip: 10.30.4.238
+        ip: 10.30.4.237
         netmask: 255.255.255.0
         gateway: 10.30.4.254
         dns_servers:
