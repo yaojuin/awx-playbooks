@@ -40,5 +40,5 @@
         joindomain: psdev.com
         password: !qwerty7
         timezone: 215
-      template: 'SWinSvr2016Temp'
+      template: 'WinSvr2016Temp'
       wait_for_ip_address: yes
