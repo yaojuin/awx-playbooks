@@ -38,7 +38,7 @@
         domainadmin: psdev\cyclops
         domainadminpassword: '!gu35S%Me)'
         joindomain: psdev.com
-        password: !qwerty7
+        password: '!qwerty7'
         timezone: 215
       template: 'WinSvr2016Temp'
       wait_for_ip_address: yes
