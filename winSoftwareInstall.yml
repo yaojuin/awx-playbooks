@@ -1,0 +1,10 @@
+---
+- hosts: all
+  tasks:
+  - name: Install the following list of Software
+    win_chocolatey:
+      name:
+      - adobereader
+      - googlechrome
+      - vlc
+     state: latest
