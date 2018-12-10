@@ -6,9 +6,9 @@
       category_names: 
       - CriticalUpdates
       - SecurityUpdates
+      - FeaturePacks
+      - UpdateRollups
+      - DefinitionUpdates
       state: installed
-    register: update_result
+      reboot: yes
     
-  - name: reboot host if required
-    win_reboot:
-    when: update_result.reboot_required
