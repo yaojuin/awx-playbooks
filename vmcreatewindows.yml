@@ -33,7 +33,7 @@
         - 10.30.2.170
         - 10.30.2.158
         domain : psdev.com
-        hostname: {{ host_name }}
+        hostname: "{{ host_name }}"
         autologon: yes
         domainadmin: psdev\cyclops
         domainadminpassword: '!gu35S%Me)'
