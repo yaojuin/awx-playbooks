@@ -1,14 +1,11 @@
 ---
-- hosts: '{{ target }}'
+- hosts: '{{ host_name }}'
   tasks:
   - name: Install all critical and security updates
     win_updates: 
       category_names: 
       - CriticalUpdates
       - SecurityUpdates
-      - FeaturePacks
-      - UpdateRollups
-      - DefinitionUpdates
       state: installed
       reboot: yes
     
