@@ -10,7 +10,7 @@
       cluster: SGDEV-ESXCLU-01
       datacenter: 'SGDEV'
       folder: SGDEV/vm
-      name: 'AWXDEPLOYWindows'
+      name: "{{ VM_name }}"
       state: poweredon
       guest_id: windows9Server64Guest
       disk:
