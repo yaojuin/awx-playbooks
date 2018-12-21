@@ -10,7 +10,7 @@
       cluster: SGDEV-ESXCLU-01
       datacenter: 'SGDEV'
       folder: SGDEV/vm
-      name: 'AWXDEPLOY'
+      name: "{{ VM_name }}"
       state: poweredon
       guest_id: centos64Guest
       disk:
@@ -19,21 +19,21 @@
         autoselect_datastore: yes
       networks:
       - name: Dev Network vlan2
-        ip: 10.30.4.238
+        ip: "{{ ip_address }}"
         netmask: 255.255.255.0
-        gateway: 10.30.4.254
+        gateway: "{{ gateway }}"
         dns_servers:
         - 10.30.2.170
         - 10.30.2.158
       hardware:
-        memory_mb: 4096
-        num_cpus: 2
+        memory_mb: "{{ ram }}"
+        num_cpus: "{{ core_count }}"
       customization:
         dns_servers:
         - 10.30.2.170
         - 10.30.2.158
         domain : psdev.com
-        hostname: 'AWXDEPLOY'
+        hostname: "{{ host_name }}"
       template: 'CentosTemplate'
       wait_for_ip_address: yes
  
