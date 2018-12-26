@@ -1,0 +1,12 @@
+---
+- hosts: '{{ host_name }}'
+  tasks:
+  - name: Install selected Updates
+    win_updates:
+      category_names:
+      - SecurityUpdates
+      whitelist:
+      
+      state: installed
+      reboot: yes
+  
