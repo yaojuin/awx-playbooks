@@ -1,5 +1,5 @@
 ---
-- hosts: '{{ host_name }}'
+- hosts: all
   tasks:
   - name: Install all critical and security updates
     win_updates: 
