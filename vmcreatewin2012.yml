@@ -44,4 +44,4 @@
         password: '!qwerty7'
         timezone: 215
       template: 'WinSvr2012Temp'
-wait_for_ip_address: yes
+      wait_for_ip_address: yes
