@@ -7,7 +7,7 @@
     vmware_guest:
       hostname: SGDEV-VCSA-01.pspl.phillip.com
       validate_certs: no
-      cluster: SGDEV-ESXCLU-01
+      esxi_hostname: "{{ esxi_host }}"
       datacenter: 'SGDEV'
       folder: SGDEV/vm
       name: "{{ VM_name }}"
