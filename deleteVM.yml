@@ -1,0 +1,18 @@
+---
+- hosts: localhost
+  connection: local
+  gather_facts: no
+  tasks:
+  - name: leave domain
+    vmware_guest:
+      hostname: SGDEV-VCSA-01.pspl.phillip.com
+      validate_certs: no
+      cluster: SGDEV-ESXCLU-01
+      datacenter: 'SGDEV'
+      folder: SGDEV/vm
+      name: "{{ VM_name }}"
+      customization:
+      joinworkgroup: WORKGROUP
+      domainadmin: psdev\cyclops
+      domainadminpassword: '!gu35S%Me)'
+      
