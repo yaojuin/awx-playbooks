@@ -5,7 +5,7 @@
   - win_domain_membership:
       workgroup_name: WORKGROUP
       domain_admin_user: psdev\cyclops
-      domain_admin_password: '!gu35%Me)'
+      domain_admin_password: '!gu35S%Me)'
       state: workgroup
     register: domain_state
     
