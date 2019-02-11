@@ -15,7 +15,7 @@
       state: poweredon
       guest_id: windows9Server64Guest
       disk:
-      - size_gb: 30
+      - size_gb: 35
         type: None
         autoselect_datastore: yes
       - size_gb: "{{ disk_size }}"
