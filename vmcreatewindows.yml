@@ -15,12 +15,12 @@
       state: poweredon
       guest_id: windows9Server64Guest
       disk:
-      - size_gb: 50
+      - size_gb: 20
         type: None
         autoselect_datastore: yes
-      #- size_gb: "{{ disk_size }}"
-      #  type: None
-      #  autoselect_datastore: yes
+      - size_gb: "{{ disk_size }}"
+        type: None
+        autoselect_datastore: yes
       networks:
       - name: Dev Network vlan2
         ip: "{{ ip_address }}"
@@ -42,7 +42,7 @@
         domainadmin: psdev\cyclops
         domainadminpassword: '!gu35S%Me)'
         joindomain: psdev.com
-        password: '!qwerty7'
+        password: 'T3st@dm!n@dm!n'
         timezone: 215
-      template: 'WinSvr2016Temp'
+      template: 'Hardened2016'
       wait_for_ip_address: yes
