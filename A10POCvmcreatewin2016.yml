@@ -1,0 +1,48 @@
+---
+- hosts: localhost
+  connection: local
+  gather_facts: no
+  tasks:
+  - name: create the VM
+    vmware_guest:
+      hostname: SGDEV-VCSA-01.pspl.phillip.com
+      validate_certs: no
+      #cluster: SGDEV-ESXCLU-01 #Remove this comment if DRS is turned on.
+      esxi_hostname: "{{ esxi_host }}"
+      datacenter: 'SGDEV'
+      folder: SGDEV/vm
+      name: "{{ VM_name }}"
+      state: poweredon
+      guest_id: windows9Server64Guest
+      disk:
+      - size_gb: 40
+        type: None
+        autoselect_datastore: yes
+      #- size_gb: "{{ disk_size }}"
+      #  type: None
+      #  autoselect_datastore: yes
+      networks:
+      - name: Dev Network vlan2
+        ip: "{{ ip_address }}"
+        netmask: 255.255.255.0
+        gateway: "{{ gateway }}"
+        dns_servers:
+        - 172.31.1.10
+        - 10.30.2.158
+      hardware:
+        memory_mb: "{{ ram }}"
+        num_cpus: "{{ core_count }}"
+      customization:
+        dns_servers:
+        - 172.31.1.10
+        - 10.30.2.158
+        domain : psdev.com
+        hostname: "{{ host_name }}"
+        autologon: yes
+        domainadmin: psdev\cyclops
+        domainadminpassword: '!gu35S%Me)'
+        joindomain: psdev.com
+        password: '!qwerty7'
+        timezone: 215
+      template: 'Hardened2016'
+wait_for_ip_address: yes
