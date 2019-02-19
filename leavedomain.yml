@@ -1,5 +1,6 @@
 ---
-- hosts: all 
+- hosts:
+    A10POC4_423f2720-6799-a007-9c6c-fc38cc309df9
   gather_facts: yes
   tasks:
   - win_domain_membership:
