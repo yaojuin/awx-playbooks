@@ -1,6 +1,8 @@
 ---
 - hosts:
     A10POC4_423f2720-6799-a007-9c6c-fc38cc309df9
+    A10POC5_423f910e-cbe7-fb78-2eb4-0212f09c930e
+    A10POC6_423f1c08-7ecf-2dcc-e228-e8fd579e830e
   gather_facts: yes
   tasks:
   - win_domain_membership:
