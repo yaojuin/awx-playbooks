@@ -1,8 +1,5 @@
 ---
-- hosts:
-    A10POC4.psdev.com
-    A10POC5.psdev.com
-    A10POC6.psdev.com
+- hosts: all 
   gather_facts: yes
   tasks:
   - win_domain_membership:
