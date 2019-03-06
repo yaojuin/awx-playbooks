@@ -46,5 +46,7 @@
         joindomain: psdev.com
         password: 'T3st@dm!n@dm!n'
         timezone: 215
+        runonce: 
+        - powershell.exe get-disk | where partitionstyle -eq 'raw' | Initialize-Disk -PartitionStyle GPT -PassThru | New-Partition -DriveLetter D -UseMaximumSize | Format-Volume -FileSystem NTFS -NewFileSystemLabel "New Volume" -Confirm:$false
       template: 'Hardened2016'
       wait_for_ip_address: yes
