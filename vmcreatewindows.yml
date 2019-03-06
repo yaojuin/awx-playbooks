@@ -14,6 +14,8 @@
       name: "{{ VM_name }}"
       state: poweredon
       guest_id: windows9Server64Guest
+      cdrom:
+      - type: none
       disk:
       - size_gb: 35
         type: None
