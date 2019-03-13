@@ -18,9 +18,9 @@
       - size_gb: 40
         type: None
         autoselect_datastore: yes
-      #- size_gb: "{{ disk_size }}"
-      #  type: None
-      #  autoselect_datastore: yes
+      - size_gb: "{{ disk_size }}"
+        type: None
+        autoselect_datastore: yes
       networks:
       - name: Dev Network vlan2
         ip: "{{ ip_address }}"
