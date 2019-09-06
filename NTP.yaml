@@ -1,0 +1,12 @@
+---
+- hosts: TEST
+  user: ansible
+  become: yes
+  become_method: sudo
+  tasks:
+
+  - name: Enable NTP service
+    command: systemctl enable ntpd
+
+  - name: Start NTP service
+    command: systemctl start ntpd  
