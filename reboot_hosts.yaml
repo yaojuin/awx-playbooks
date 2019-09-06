@@ -1,0 +1,22 @@
+---
+- hosts: TEST
+  user: ansible
+  become: yes
+  become_method: sudo
+  tasks:
+  
+  - name: Reboot machines that might have updates to apply
+    shell: "sleep 5 && reboot"
+    async: 1
+    poll: 0
+   
+  - name: Wait for 300 seconds, but only start checking after 60 seconds
+    wait_for_connection: 
+      delay: 60
+      timeout: 300
+     
+
+     
+
+
+

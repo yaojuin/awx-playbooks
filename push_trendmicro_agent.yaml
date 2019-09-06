@@ -1,0 +1,26 @@
+---
+- hosts: TEST
+  user: ansible
+  become: yes
+  become_method: sudo
+  tasks:
+
+  - name: Copy TrendMicro Agent installer to tmp
+    copy:
+      src: /tmp/Agent-Core-RedHat_EL7-11.0.0-796.x86_64.rpm
+      dest: /tmp/Agent-Core-RedHat_EL7-11.0.0-796.x86_64.rpm
+      owner: ansible
+      
+  - name: Modify permissions of the installer file
+    shell: chmod 766 /tmp/Agent-Core-RedHat_EL7-11.0.0-796.x86_64.rpm
+
+  - name: Install the TrendMicro Agent
+    yum: 
+      name: /tmp/Agent-Core-RedHat_EL7-11.0.0-796.x86_64.rpm
+      state: present
+
+  - name: Reset agent's configuration. This will remove activation information from the agent and deactivate it.
+    shell: /opt/ds_agent/dsa_control -r
+
+  - name: Activate agent with manager at the specified URL
+    shell: /opt/ds_agent/dsa_control -a dsm://172.21.1.51:4120

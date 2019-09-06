@@ -1,0 +1,112 @@
+# This is the default ansible 'hosts' file.
+#
+# It should live in /etc/ansible/hosts
+#
+#   - Comments begin with the '#' character
+#   - Blank lines are ignored
+#   - Groups of hosts are delimited by [header] elements
+#   - You can enter hostnames or ip addresses
+#   - A hostname/ip can be a member of multiple groups
+
+# Ex 1: Ungrouped hosts, specify before any group headers.
+
+## green.example.com
+## blue.example.com
+## 192.168.100.1
+## 192.168.100.10
+
+# Ex 2: A collection of hosts belonging to the 'webservers' group
+
+## [webservers]
+## alpha.example.org
+## beta.example.org
+## 192.168.1.100
+## 192.168.1.110
+
+# If you have multiple hosts following a pattern you can specify
+# them like this:
+
+## www[001:006].example.com
+
+# Ex 3: A collection of database servers in the 'dbservers' group
+
+## [dbservers]
+## 
+## db01.intranet.mydomain.net
+## db02.intranet.mydomain.net
+## 10.25.1.56
+## 10.25.1.57
+
+# Here's another example of host ranges, this time there are no
+# leading 0s:
+
+## db-[99:101]-node.example.com
+[PROD]
+#put IP or hostname as below
+172.17.1.100
+172.17.1.101
+172.17.1.102
+172.17.1.103
+172.17.1.64
+172.17.1.75
+172.17.1.76
+172.17.1.77
+172.17.1.78
+172.17.1.79
+172.17.1.80
+172.17.1.81
+172.17.1.82
+172.17.1.83
+172.17.1.84
+172.17.1.85
+172.17.1.99
+172.17.3.51
+172.18.3.105
+172.18.3.106
+172.17.3.66
+172.17.3.67
+172.18.2.108
+172.18.2.109
+172.18.2.110
+172.18.3.1
+172.18.3.2
+172.18.3.29
+172.18.3.3
+172.18.3.30
+172.18.3.31
+172.18.3.32
+172.18.3.33
+172.18.3.34
+172.18.3.36
+172.18.3.37
+172.18.3.39
+172.18.3.40
+172.18.3.41
+172.18.3.42
+172.18.3.43
+172.18.3.44
+172.18.3.45
+172.18.3.46
+172.18.3.47
+172.19.0.45
+172.19.0.46
+172.19.0.47
+172.21.1.32
+172.18.3.35
+172.18.3.38
+172.18.3.107
+172.18.3.108
+172.18.3.109
+172.18.3.112
+
+[TEST]
+#put IP or hostname as below
+#test.sat
+
+
+
+
+
+[DEV]
+#put IP or hostname as below
+dev.sat

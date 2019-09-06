@@ -1,0 +1,32 @@
+---
+- hosts: PROD
+  user: root
+  become: yes
+  become_method: sudo
+  tasks:
+
+  - name:  Copying Hardening script
+    copy:
+      src: /root/rhel7_harden_v2.2.sh
+      dest: /root/rhel7_harden_v2.2.sh
+      owner: root
+      group: root
+      
+  - name: edit puppet.conf
+    lineinfile:
+      path: /etc/puppetlabs/puppet/puppet.conf
+      regexp: "{{ item.regexp }}"
+      line: "{{ item.line }}"
+      create: yes
+    with_items:
+      - { regexp: '^\[agent\]', line: '[agent]' }
+      - { regexp: '^ca_server= ps-pvlcapsule01.pcweb.com', line: 'ca_server= ps-pvlcapsule01.pcweb.com' }
+      - { regexp: '^server= ps-pvlcapsule01.pcweb.com', line: 'server= ps-pvlcapsule01.pcweb.com' }
+      - { regexp: '^environment= production', line: 'environment= production' }
+
+  - name: enable puppet 
+    service:
+      name: puppet
+      state: started
+      enabled: yes
+

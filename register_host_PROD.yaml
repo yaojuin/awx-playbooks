@@ -1,0 +1,57 @@
+---
+- hosts: TEST 
+  user: ansible 
+  become: yes
+  become_method: sudo
+  tasks:
+
+  - name: Setup local repository for RHEL 7 
+    yum_repository: 
+      name: rh-satellite-temp
+      description: temp repo
+      baseurl: http://172.21.1.57/pub/rhel7
+      enabled: yes
+      gpgcheck: no
+    when: ansible_distribution_major_version == '7'
+
+  - name: Reinstall subscription-manager
+    yum:
+      name: subscription-manager*
+      state: present
+
+  - name: Remove local epel Repo
+    file:
+      path: /etc/yum.repos.d/epel.repo
+      state: absent
+
+  - name: Remove temp Repo
+    file:
+      path: /etc/yum.repos.d/rh-satellite-temp.repo
+      state: absent
+
+  - name: Install pre-built bootstrap RPM
+    yum:
+      name: https://ps-pvlcapsule01.pcweb.com/pub/katello-ca-consumer-latest.noarch.rpm
+      validate_certs: no
+      state: present
+ 
+  - name: Unregister subscription manager
+    shell: /usr/sbin/subscription-manager clean
+
+  - name: Register with AK
+    redhat_subscription:
+      state: present
+      activationkey: "AK-RHEL7-PROD"
+      org_id: "Phillip_Securities"
+
+  - name: Install Client Package
+    yum: 
+      name: "{{ item }}"
+      state: present
+    with_items:
+      - katello-host-tools
+      - katello-agent
+      - katello-host-tools-tracer
+
+  - name: Update katello service
+    shell: /sbin/katello-tracer-upload
